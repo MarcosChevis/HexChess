@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "w_bishop_2x_ns.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

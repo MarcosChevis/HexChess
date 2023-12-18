@@ -33,7 +33,7 @@ class StatefulEntity<State, Event>: GKEntity {
     }
     
     func reduce(currentState: State, for event: Event) -> State {
-        state
+        fatalError("implementa isso daqui idiota")
     }
 }
 

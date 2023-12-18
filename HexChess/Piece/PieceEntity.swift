@@ -67,6 +67,7 @@ class PieceEntity: StatefulEntity<PieceState, PieceEvent> {
         case .move(let point):
             moveComponent.move(to: point)
         case .die:
+            // ATUALIZAR BOARD PARA REMOVER PECA
             node.removeFromParent()
         case .select:
             highlighterComponent.highlightMoviment(currentPosition: state.position)

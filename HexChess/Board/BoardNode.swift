@@ -20,6 +20,8 @@ class Board: SKNode, GameGlobalStateProtocol {
         PieceEntity(initialState: $0)
     }
     
+    private let boardWidthTileMultiplier = 8.5
+    
     private lazy var nodes: [Point: HexNode] = [:]
     
     private lazy var hexNodes : [HexNode] = Array(repeating: 0, count: 91).map { _ in
@@ -40,10 +42,10 @@ class Board: SKNode, GameGlobalStateProtocol {
     }
     
     // MARK: Setup
-    func setupBoard() {
+    func setupBoard(sceneSize: CGSize) {
         setupNodes(points: Algorithms.generateCoordinates())
         setupBoardColor()
-        setupBoardPosition()
+        setupBoardPosition(sceneSize: sceneSize)
         setupPieces()
     }
     
@@ -105,9 +107,17 @@ class Board: SKNode, GameGlobalStateProtocol {
     }
     
     // MARK: Update Setup
-    private func setupBoardPosition() {
+    private func setupBoardPosition(sceneSize: CGSize) {
         let shapeSize = CGSize(width: hexNodes.first!.frame.size.width + HexNode.lineWidth, height: hexNodes.first!.frame.size.height + HexNode.lineWidth)
-        var position = CGPoint(x: shapeSize.width/2, y: shapeSize.height*2.5)
+        
+        let boardWidth = shapeSize.width * boardWidthTileMultiplier
+        let screenWidth = sceneSize.width
+        
+        var position = CGPoint(
+            x: startingPosition(boardWidth: boardWidth, screenWidth: screenWidth, shapeWidth: shapeSize.width),
+            y: shapeSize.height * 2.5
+        )
+        
         var i = 0
         while i < hexNodes.count {
             hexNodes[i].position = position
@@ -126,15 +136,17 @@ class Board: SKNode, GameGlobalStateProtocol {
     }
     
     func centralizePosition(sceneSize: CGSize) {
-        position.x = ((sceneSize.width) - (tileSize.width * 8.5)) / 2
+        position.x = ((sceneSize.width) - (tileSize.width * boardWidthTileMultiplier)) / 2
     }
-    
 
+    func startingPosition(boardWidth: CGFloat, screenWidth: CGFloat, shapeWidth: CGFloat) -> CGFloat {
+        ((screenWidth - boardWidth) / 2) - (shapeWidth / 8)
+    }
     
     private func setupBoardColor() {
         var i = 0
         var lastColorBreak = 0
-        let colorBreaks = [6, 13, 21, 30, 40, 60, 69, 77, 84 ]
+        let colorBreaks = [6, 13, 21, 30, 40, 60, 69, 77, 84]
         var colors: [UIColor] = [UIColor(resource: .board3), UIColor(resource: .board2), UIColor(resource: .board1)]
         while i <= 50 {
             if colorBreaks.contains(i) {

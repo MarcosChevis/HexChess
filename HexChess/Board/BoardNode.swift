@@ -22,15 +22,15 @@ class Board: SKNode, GameGlobalStateProtocol {
     
     private let boardWidthTileMultiplier = 8.5
     
-    private lazy var nodes: [Point: HexNode] = [:]
+    private lazy var nodes: [Point: TileEntity] = [:]
     
-    private lazy var hexNodes : [HexNode] = Array(repeating: 0, count: 91).map { _ in
-        HexNode.build()
+    private lazy var hexNodes : [TileEntity] = Array(repeating: 0, count: 91).map { _ in
+            .init(initialState: .init(isSelectable: false, color: .clear))
     }
     
     private var tileSize: CGSize {
-        CGSize(width: hexNodes.first!.frame.size.width + HexNode.lineWidth,
-               height: hexNodes.first!.frame.size.height + HexNode.lineWidth)
+        CGSize(width: hexNodes.first!.node.frame.size.width + TileNode.lineWidth,
+               height: hexNodes.first!.node.frame.size.height + TileNode.lineWidth)
     }
     
     private override init() {
@@ -50,26 +50,26 @@ class Board: SKNode, GameGlobalStateProtocol {
     }
     
     private func setupPieces() {
-        pieces.forEach { piece in
-            addChild(piece.node)
-            piece.node.position = nodes[piece.state.position]?.position ?? .zero
-            nodes[piece.state.position]
-        }
+//        pieces.forEach { piece in
+//            addChild(piece.node)
+//            piece.node.position = nodes[piece.state.position]?.position ?? .zero
+//            nodes[piece.state.position]
+//        }
+        #warning("isso não deveria ser assim - Bahia, Gabriel")
         
     }
     
     private func setupNodes(points: [Point]) {
         addHexNodes()
-        points.enumerated().forEach {i, p in
+        points.enumerated().forEach { i, p in
             nodes[p] = hexNodes[i]
-            nodes[p]?.point = p
+            nodes[p]?.render(event: .willGetCoordinates(p))
         }
     }
     
     private func addHexNodes() {
         hexNodes.forEach {
-            addChild($0)
-            $0.strokeColor = .clear
+            addChild($0.node)
         }
     }
 
@@ -85,23 +85,20 @@ class Board: SKNode, GameGlobalStateProtocol {
     }
     
     func highlightTiles(at points: [Point]) {
-        points.forEach { point in
-//            nodes[point].taCACORAí
-        }
-        
         let allPosition = pieces.map(\.state.position)
         points.forEach {
-            if allPosition.contains($0) {
-                nodes[$0]?.fillColor = UIColor(resource: .kill)
-            } else {
-                nodes[$0]?.fillColor = UIColor(resource: .selected)
-            }
+            nodes[$0]?.render(event: .hasHighlighted)
+//            if allPosition.contains($0) {
+//                nodes[$0]?.fillColor = UIColor(resource: .kill)
+//            } else {
+//                nodes[$0]?.fillColor = UIColor(resource: .highlited)
+//            }
             
         }
     }
     
     func higlightSelectedTile(at point: Point) {
-        nodes[point]?.fillColor = UIColor(resource: .highlighted)
+        nodes[point]?.render(event: .hasSelected) //.fillColor = UIColor(resource: .highlighted)
     }
     
     func getPieces(for player: Player) -> [PieceState] {
@@ -109,12 +106,12 @@ class Board: SKNode, GameGlobalStateProtocol {
     }
     
     func gamePosition(for point: Point) -> CGPoint? {
-        nodes[point]?.position
+        nodes[point]?.node.position
     }
     
     // MARK: Update Setup
     private func setupBoardPosition(sceneSize: CGSize) {
-        let shapeSize = CGSize(width: hexNodes.first!.frame.size.width + HexNode.lineWidth, height: hexNodes.first!.frame.size.height + HexNode.lineWidth)
+        let shapeSize = CGSize(width: hexNodes.first!.node.frame.size.width + TileNode.lineWidth, height: hexNodes.first!.node.frame.size.height + TileNode.lineWidth)
         
         let boardWidth = shapeSize.width * boardWidthTileMultiplier
         let screenWidth = sceneSize.width
@@ -126,7 +123,7 @@ class Board: SKNode, GameGlobalStateProtocol {
         
         var i = 0
         while i < hexNodes.count {
-            hexNodes[i].position = position
+            hexNodes[i].node.position = position
             position = CGPoint(x: position.x, y: position.y - shapeSize.height)
             if let index = breaks.firstIndex(of: i) {
                 let heightMultiplier: CGFloat
@@ -160,7 +157,7 @@ class Board: SKNode, GameGlobalStateProtocol {
                 colors.append(popedColor)
                 lastColorBreak = i
             }
-            hexNodes[i].fillColor = colors[(i-lastColorBreak) % 3]
+            hexNodes[i].render(event: .willBeColored(colors[(i-lastColorBreak) % 3]))
             i += 1
         }
         
@@ -175,7 +172,7 @@ class Board: SKNode, GameGlobalStateProtocol {
                 colors.append(popedColor)
                 lastColorBreak = i
             }
-            hexNodes[i].fillColor = colors[(lastColorBreak - i) % 3]
+            hexNodes[i].render(event: .willBeColored(colors[(lastColorBreak - i) % 3]))
             i -= 1
         }
     }

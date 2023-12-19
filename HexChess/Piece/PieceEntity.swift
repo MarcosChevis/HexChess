@@ -7,7 +7,7 @@
 
 import GameplayKit
 
-class PieceEntity: StatefulEntity<PieceState, PieceEvent> {
+class PieceEntity: StatefulEntity<PieceState, PieceEvent, PieceNode> {
     
     private var moveComponent: MoveComponent {
         guard let component = component(ofType: MoveComponent.self) else {

@@ -7,9 +7,9 @@
 
 import GameplayKit
 
-class StatefulComponent<State, Event>: GKComponent {
-    var statefulEntity: StatefulEntity<State, Event> {
-        guard let statefulEntity = entity as? StatefulEntity<State, Event> else {
+class StatefulComponent<State, Event, Node: SKNode>: GKComponent {
+    var statefulEntity: StatefulEntity<State, Event, Node> {
+        guard let statefulEntity = entity as? StatefulEntity<State, Event, Node> else {
             preconditionFailure("Entity is not initialized or it is not a Stateful entity")
         }
         

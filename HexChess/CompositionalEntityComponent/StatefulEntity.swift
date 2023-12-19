@@ -9,12 +9,12 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class StatefulEntity<State, Event>: GKEntity {
+class StatefulEntity<State, Event, Node: SKNode>: GKEntity {
     
     private(set) var state: State
-    let node: SKSpriteNode
+    let node: Node
     
-    init(initialState: State, node: SKSpriteNode) {
+    init(initialState: State, node: Node) {
         self.state = initialState
         self.node = node
         super.init()

@@ -7,16 +7,14 @@
 
 import SpriteKit
 
-final class HexNode: SKShapeNode {
-    var point: Point?
-    
+final class TileNode: SKShapeNode {
     static let size = CGSize(width: 75, height: 75)
     static let lineWidth: CGFloat = 5
 }
 
-extension HexNode {
-    static func build() -> HexNode {
-        HexNode(rect: .init(x: 0, y: 0, width: HexNode.size.width, height: HexNode.size.height), lineWidth: HexNode.lineWidth, sides: 6, cornerRadius: 0)
+extension TileNode {
+    static func build() -> TileNode {
+        TileNode(rect: .init(x: 0, y: 0, width: TileNode.size.width, height: TileNode.size.height), lineWidth: TileNode.lineWidth, sides: 6, cornerRadius: 0)
     }
 }
 
@@ -61,5 +59,6 @@ extension SKShapeNode {
         
         self.init(path: path.cgPath, centered: true)
         self.isUserInteractionEnabled = true
+        self.strokeColor = .clear
     }
 }

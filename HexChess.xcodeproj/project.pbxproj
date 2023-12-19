@@ -13,7 +13,7 @@
 		BADCB7492A83134A0041321D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BADCB7482A83134A0041321D /* Assets.xcassets */; };
 		BADCB74C2A83134A0041321D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BADCB74A2A83134A0041321D /* LaunchScreen.storyboard */; };
 		BADCB7652A8314790041321D /* BoardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB7542A8314790041321D /* BoardNode.swift */; };
-		BADCB7662A8314790041321D /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB7552A8314790041321D /* HexNode.swift */; };
+		BADCB7662A8314790041321D /* TileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB7552A8314790041321D /* TileNode.swift */; };
 		BADCB7672A8314790041321D /* PieceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB7572A8314790041321D /* PieceNode.swift */; };
 		BADCB7682A8314790041321D /* PieceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB7582A8314790041321D /* PieceEntity.swift */; };
 		BADCB7692A8314790041321D /* HighlighterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB75A2A8314790041321D /* HighlighterComponent.swift */; };
@@ -27,6 +27,7 @@
 		BADCB7712A8314790041321D /* StatefulEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB7642A8314790041321D /* StatefulEntity.swift */; };
 		BAE878332B3126DF00B049B6 /* TileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE878322B3126DF00B049B6 /* TileState.swift */; };
 		BAE878362B3126FC00B049B6 /* TileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE878352B3126FC00B049B6 /* TileEntity.swift */; };
+		BAE878382B324CFE00B049B6 /* TileEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE878372B324CFE00B049B6 /* TileEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +39,7 @@
 		BADCB74B2A83134A0041321D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BADCB74D2A83134A0041321D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BADCB7542A8314790041321D /* BoardNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardNode.swift; sourceTree = "<group>"; };
-		BADCB7552A8314790041321D /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
+		BADCB7552A8314790041321D /* TileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileNode.swift; sourceTree = "<group>"; };
 		BADCB7572A8314790041321D /* PieceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceNode.swift; sourceTree = "<group>"; };
 		BADCB7582A8314790041321D /* PieceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceEntity.swift; sourceTree = "<group>"; };
 		BADCB75A2A8314790041321D /* HighlighterComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlighterComponent.swift; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		BADCB7642A8314790041321D /* StatefulEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulEntity.swift; sourceTree = "<group>"; };
 		BAE878322B3126DF00B049B6 /* TileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileState.swift; sourceTree = "<group>"; };
 		BAE878352B3126FC00B049B6 /* TileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileEntity.swift; sourceTree = "<group>"; };
+		BAE878372B324CFE00B049B6 /* TileEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				BADCB7542A8314790041321D /* BoardNode.swift */,
-				BADCB7552A8314790041321D /* HexNode.swift */,
+				BADCB7552A8314790041321D /* TileNode.swift */,
 				BAE878342B3126E600B049B6 /* Tile */,
 			);
 			path = Board;
@@ -153,6 +155,7 @@
 			children = (
 				BAE878322B3126DF00B049B6 /* TileState.swift */,
 				BAE878352B3126FC00B049B6 /* TileEntity.swift */,
+				BAE878372B324CFE00B049B6 /* TileEvent.swift */,
 			);
 			path = Tile;
 			sourceTree = "<group>";
@@ -227,7 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BADCB7662A8314790041321D /* HexNode.swift in Sources */,
+				BADCB7662A8314790041321D /* TileNode.swift in Sources */,
 				BADCB7652A8314790041321D /* BoardNode.swift in Sources */,
 				BADCB7682A8314790041321D /* PieceEntity.swift in Sources */,
 				BADCB7672A8314790041321D /* PieceNode.swift in Sources */,
@@ -236,6 +239,7 @@
 				BADCB76E2A8314790041321D /* Point.swift in Sources */,
 				BADCB76B2A8314790041321D /* GameScene.swift in Sources */,
 				BADCB7442A8313490041321D /* GameViewController.swift in Sources */,
+				BAE878382B324CFE00B049B6 /* TileEvent.swift in Sources */,
 				BADCB76A2A8314790041321D /* MoveComponent.swift in Sources */,
 				BADCB76D2A8314790041321D /* Algorithims.swift in Sources */,
 				BADCB7702A8314790041321D /* StatefulComponent.swift in Sources */,
@@ -388,6 +392,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QRB568C47A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HexChess/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -414,6 +419,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QRB568C47A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HexChess/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

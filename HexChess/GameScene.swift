@@ -17,7 +17,7 @@ class GameScene: SKScene {
         anchorPoint = .init(x: 0, y: 0.5)
         size = .init(width: 750, height: 1334)
         addChild(board)
-        board.setupBoard()
+        board.setupBoard(sceneSize: size)
     }
     
     override func didChangeSize(_ oldSize: CGSize) {

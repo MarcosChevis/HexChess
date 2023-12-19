@@ -25,6 +25,8 @@
 		BADCB76F2A8314790041321D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB7612A8314790041321D /* Player.swift */; };
 		BADCB7702A8314790041321D /* StatefulComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB7632A8314790041321D /* StatefulComponent.swift */; };
 		BADCB7712A8314790041321D /* StatefulEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCB7642A8314790041321D /* StatefulEntity.swift */; };
+		BAE878332B3126DF00B049B6 /* TileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE878322B3126DF00B049B6 /* TileState.swift */; };
+		BAE878362B3126FC00B049B6 /* TileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE878352B3126FC00B049B6 /* TileEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		BADCB7612A8314790041321D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		BADCB7632A8314790041321D /* StatefulComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulComponent.swift; sourceTree = "<group>"; };
 		BADCB7642A8314790041321D /* StatefulEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulEntity.swift; sourceTree = "<group>"; };
+		BAE878322B3126DF00B049B6 /* TileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileState.swift; sourceTree = "<group>"; };
+		BAE878352B3126FC00B049B6 /* TileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 			children = (
 				BADCB7542A8314790041321D /* BoardNode.swift */,
 				BADCB7552A8314790041321D /* HexNode.swift */,
+				BAE878342B3126E600B049B6 /* Tile */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -141,6 +146,15 @@
 				BADCB7642A8314790041321D /* StatefulEntity.swift */,
 			);
 			path = CompositionalEntityComponent;
+			sourceTree = "<group>";
+		};
+		BAE878342B3126E600B049B6 /* Tile */ = {
+			isa = PBXGroup;
+			children = (
+				BAE878322B3126DF00B049B6 /* TileState.swift */,
+				BAE878352B3126FC00B049B6 /* TileEntity.swift */,
+			);
+			path = Tile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,8 +239,10 @@
 				BADCB76A2A8314790041321D /* MoveComponent.swift in Sources */,
 				BADCB76D2A8314790041321D /* Algorithims.swift in Sources */,
 				BADCB7702A8314790041321D /* StatefulComponent.swift in Sources */,
+				BAE878362B3126FC00B049B6 /* TileEntity.swift in Sources */,
 				BADCB7402A8313490041321D /* AppDelegate.swift in Sources */,
 				BADCB76C2A8314790041321D /* PieceState.swift in Sources */,
+				BAE878332B3126DF00B049B6 /* TileState.swift in Sources */,
 				BADCB7422A8313490041321D /* SceneDelegate.swift in Sources */,
 				BADCB7692A8314790041321D /* HighlighterComponent.swift in Sources */,
 			);

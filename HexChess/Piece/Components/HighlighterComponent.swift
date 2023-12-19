@@ -50,7 +50,7 @@ final class KnightHighlighterComponent: HighlighterComponent {
         let availableSpots = Algorithms.knightAvalibleSpaces(for: currentPosition).filter {
             !playerPieces.contains($0)
         }
-        Board.shared.highlightTiles(at: availableSpots)
+        globalState.highlightTiles(at: availableSpots)
     }
 }
 

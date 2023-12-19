@@ -9,7 +9,6 @@ import SpriteKit
 
 final class HexNode: SKShapeNode {
     var point: Point?
-    var piece: PieceState?
     
     static let size = CGSize(width: 75, height: 75)
     static let lineWidth: CGFloat = 5

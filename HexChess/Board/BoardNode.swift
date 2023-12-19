@@ -53,7 +53,9 @@ class Board: SKNode, GameGlobalStateProtocol {
         pieces.forEach { piece in
             addChild(piece.node)
             piece.node.position = nodes[piece.state.position]?.position ?? .zero
+            nodes[piece.state.position]
         }
+        
     }
     
     private func setupNodes(points: [Point]) {
@@ -83,6 +85,10 @@ class Board: SKNode, GameGlobalStateProtocol {
     }
     
     func highlightTiles(at points: [Point]) {
+        points.forEach { point in
+//            nodes[point].taCACORAí
+        }
+        
         let allPosition = pieces.map(\.state.position)
         points.forEach {
             if allPosition.contains($0) {
